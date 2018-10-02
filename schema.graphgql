@@ -1,4 +1,6 @@
 type Mutation {
+  upvotePost(id: ID!): Post
+  downvotePost(id: ID!): Post
   updatePost(
     id: ID!,
     author: String,
@@ -8,9 +10,9 @@ type Mutation {
     expectedVersion: Int!
   ): Post
   addPost(
-    author: String!
-    title: String!
-    content: String!
+    author: String!,
+    title: String!,
+    content: String!,
     url: String!
   ): Post!
 }
