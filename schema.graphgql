@@ -1,4 +1,11 @@
 type Mutation {
+  updatePost(
+    id: ID!,
+    author: String!,
+    title: String!,
+    content: String!,
+    url: String!
+  ): Post!
   addPost(
     id: ID!,
     author: String!,
