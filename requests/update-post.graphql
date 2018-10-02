@@ -3,8 +3,8 @@ mutation updatePost {
     id:"123"
     author:"Kubrick"
     title:"Updated author!"
-    content:"Also updated content"
-    url:"https://www.google.com"
+    content:null
+    expectedVersion: 2
   ) {
     id
     author

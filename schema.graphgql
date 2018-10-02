@@ -1,16 +1,16 @@
 type Mutation {
   updatePost(
     id: ID!,
-    author: String!,
-    title: String!,
-    content: String!,
-    url: String!
-  ): Post!
+    author: String,
+    title: String,
+    content: String,
+    url: String,
+    expectedVersion: Int!
+  ): Post
   addPost(
-    id: ID!,
-    author: String!,
-    title: String!,
-    content: String!,
+    author: String!
+    title: String!
+    content: String!
     url: String!
   ): Post!
 }
