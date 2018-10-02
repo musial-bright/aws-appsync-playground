@@ -1,0 +1,18 @@
+mutation updatePost {
+  updatePost(
+    id:"123"
+    author:"Kubrick"
+    title:"Updated author!"
+    content:"Also updated content"
+    url:"https://www.google.com"
+  ) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+  }
+}
