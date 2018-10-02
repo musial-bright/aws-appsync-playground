@@ -1,4 +1,5 @@
 type Mutation {
+  deletePost(id: ID!, expectedVersion: Int): Post
   upvotePost(id: ID!): Post
   downvotePost(id: ID!): Post
   updatePost(
@@ -10,11 +11,17 @@ type Mutation {
     expectedVersion: Int!
   ): Post
   addPost(
+    id: ID!,
     author: String!,
     title: String!,
     content: String!,
     url: String!
   ): Post!
+}
+
+type PaginatedPosts {
+    posts: [Post!]!
+    nextToken: String
 }
 
 type Post {
@@ -29,6 +36,7 @@ type Post {
 }
 
 type Query {
+  allPost(count: Int, nextToken: String): PaginatedPosts!
   getPost(id: ID): Post
 }
 
