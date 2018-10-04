@@ -1,0 +1,17 @@
+mutation deletePost {
+  deletePost(
+    id:123
+    expectedVersion: 9999
+  ) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+  }
+}
+
+// expectedVersion is optional and deletes only when version found
