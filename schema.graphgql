@@ -36,6 +36,7 @@ type Post {
 }
 
 type Query {
+  allPostsByAuthor(author: String!, count: Int, nextToken: String): PaginatedPosts!
   allPost(count: Int, nextToken: String): PaginatedPosts!
   getPost(id: ID): Post
 }
