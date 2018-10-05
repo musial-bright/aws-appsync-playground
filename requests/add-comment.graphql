@@ -1,0 +1,13 @@
+mutation addComment {
+  addComment(
+    id:11
+    author: "Steve"
+    comment: "Such a cute dog."
+  ) {
+    id
+    comments {
+      author
+      comment
+    }
+  }
+}
