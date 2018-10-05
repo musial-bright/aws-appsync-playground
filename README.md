@@ -4,6 +4,7 @@ This playground is based on [Data sources and resolvers tutorial](https://docs.a
 
 ```
 /AmazonDunamoDBCFTemplate.yaml Cloud Formation template for AppSync, DunamoDB and Role/Policy generation.
+/LambdaCFTemplate.yaml super simple AWS Lambda test function
 /README.md Hi!
 /requests GraphQL requests
 /request-mapping-resolver mainly GraphQL to DynamoDB mapping resolver
