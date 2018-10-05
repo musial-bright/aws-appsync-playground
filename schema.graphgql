@@ -1,4 +1,6 @@
 type Mutation {
+  addTag(id: ID!, tag: String!): Post
+  removeTag(id: ID!, tag: String!): Post
   deletePost(id: ID!, expectedVersion: Int): Post
   upvotePost(id: ID!): Post
   downvotePost(id: ID!): Post
@@ -33,9 +35,11 @@ type Post {
   ups: Int!
   downs: Int!
   version: Int!
+  tags: [String!]
 }
 
 type Query {
+  allPostsByTag(tag: String!, count: Int, nextToken: String): PaginatedPosts!
   allPostsByAuthor(author: String!, count: Int, nextToken: String): PaginatedPosts!
   allPost(count: Int, nextToken: String): PaginatedPosts!
   getPost(id: ID): Post

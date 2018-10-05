@@ -1,0 +1,19 @@
+{
+    "version" : "2017-02-28",
+    "operation" : "UpdateItem",
+    "key" : {
+        "id" : { "S" : "${context.arguments.id}" }
+    },
+    "update" : {
+        "expression" : "DELETE tags :tags ADD version :plusOne",
+        "expressionValues" : {
+            ":tags" : { "SS": [ "${context.arguments.tag}" ] },
+            ":plusOne" : { "N" : 1 }
+        }
+    }
+}
+
+
+// response
+
+$utils.toJson($context.result)

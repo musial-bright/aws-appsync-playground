@@ -1,0 +1,26 @@
+{
+  "version" : "2017-02-28",
+  "operation" : "Scan",
+  "filter": {
+    "expression": "contains (tags, :tag)",
+    "expressionValues": {
+      ":tag": { "S": "${context.arguments.tag}" }
+    }
+  }
+  #if( ${context.arguments.count} )
+    ,"limit": ${context.arguments.count}
+  #end
+  #if( ${context.arguments.nextToken} )
+    ,"nextToken": "${context.arguments.nextToken}"
+  #end
+}
+
+
+// response
+
+{
+  "posts": $utils.toJson($context.result.items)
+  #if( ${context.result.nextToken} )
+      ,"nextToken": "${context.result.nextToken}"
+  #end
+}

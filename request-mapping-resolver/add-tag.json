@@ -1,0 +1,14 @@
+{
+    "version" : "2017-02-28",
+    "operation" : "UpdateItem",
+    "key" : {
+        "id" : { "S" : "${context.arguments.id}" }
+    },
+    "update" : {
+        "expression" : "ADD tags :tags, version :plusOne",
+        "expressionValues" : {
+            ":tags" : { "SS": [ "${context.arguments.tag}" ] },
+            ":plusOne" : { "N" : 1 }
+        }
+    }
+}
