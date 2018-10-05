@@ -2,7 +2,7 @@ mutation updatePost {
   updatePost(
     id:"123"
     author:"Kubrick"
-    title:"Updated author!"
+    title:"Updated director!"
     content:null
     expectedVersion: 2
   ) {

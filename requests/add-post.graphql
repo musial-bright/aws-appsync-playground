@@ -1,10 +1,10 @@
 mutation addPost {
   addPost(
     id: 123
-    author: "AUTHORNAME"
-    title: "Our first post!"
-    content: "This is our first post."
-    url: "https://aws.amazon.com/appsync/"
+    author: "Stanley Kubrick"
+    title: "Movie Director"
+    content: "One of the most influential directors of the 20th century."
+    url: "https://musial-bright.com"
   ) {
     id
     author

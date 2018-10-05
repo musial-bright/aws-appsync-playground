@@ -22,6 +22,11 @@ type Mutation {
   ): Post!
 }
 
+type Equipment {
+	id: ID!
+	name: String!
+}
+
 type Comment {
   author: String!
   comment: String!
@@ -46,6 +51,7 @@ type Post {
 }
 
 type Query {
+  getEquipment(id: ID): Equipment
   allPostsByTag(tag: String!, count: Int, nextToken: String): PaginatedPosts!
   allPostsByAuthor(author: String!, count: Int, nextToken: String): PaginatedPosts!
   allPost(count: Int, nextToken: String): PaginatedPosts!
