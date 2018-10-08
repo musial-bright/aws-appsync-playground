@@ -1,6 +1,10 @@
 # AWS AppSync Playground
 
-This playground is based on [Data sources and resolvers tutorial](https://docs.aws.amazon.com/appsync/latest/devguide/tutorial-dynamodb-resolvers.html#aws-appsync-tutorial-dynamodb-resolvers)
+This playground is based on
+
+[Data sources and resolvers tutorial](https://docs.aws.amazon.com/appsync/latest/devguide/tutorial-dynamodb-resolvers.html#aws-appsync-tutorial-dynamodb-resolvers)
+
+[Tutorial on general iOS app development](https://docs.aws.amazon.com/appsync/latest/devguide/building-a-client-app-ios-overview.html)
 
 ```
 /AmazonDunamoDBCFTemplate.yaml Cloud Formation template for AppSync, DunamoDB and Role/Policy generation.
