@@ -8,6 +8,7 @@ This playground is based on
 
 ```
 /AmazonDunamoDBCFTemplate.yaml Cloud Formation template for AppSync, DunamoDB and Role/Policy generation.
+/apps client app implementations
 /LambdaCFTemplate.yaml super simple AWS Lambda test function
 /README.md Hi!
 /requests GraphQL requests

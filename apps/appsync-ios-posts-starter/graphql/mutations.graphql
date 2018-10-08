@@ -1,0 +1,171 @@
+# this is an auto generated file. This will be overwritten
+mutation AddComment($id: ID!, $author: String!, $comment: String!) {
+  addComment(id: $id, author: $author, comment: $comment) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
+mutation AddTag($id: ID!, $tag: String!) {
+  addTag(id: $id, tag: $tag) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
+mutation RemoveTag($id: ID!, $tag: String!) {
+  removeTag(id: $id, tag: $tag) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
+mutation DeletePost($id: ID!, $expectedVersion: Int) {
+  deletePost(id: $id, expectedVersion: $expectedVersion) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
+mutation UpvotePost($id: ID!) {
+  upvotePost(id: $id) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
+mutation DownvotePost($id: ID!) {
+  downvotePost(id: $id) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
+mutation UpdatePost(
+  $id: ID!
+  $author: String
+  $title: String
+  $content: String
+  $url: String
+  $expectedVersion: Int!
+) {
+  updatePost(
+    id: $id
+    author: $author
+    title: $title
+    content: $content
+    url: $url
+    expectedVersion: $expectedVersion
+  ) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
+mutation AddPost(
+  $id: ID!
+  $author: String!
+  $title: String!
+  $content: String!
+  $url: String!
+) {
+  addPost(
+    id: $id
+    author: $author
+    title: $title
+    content: $content
+    url: $url
+  ) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}

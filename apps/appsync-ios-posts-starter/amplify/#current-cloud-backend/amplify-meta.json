@@ -1,0 +1,26 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "ostspp-20181008155210-authRole",
+      "UnauthRoleArn": "arn:aws:iam::569053839623:role/ostspp-20181008155210-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::569053839623:role/ostspp-20181008155210-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "ostspp-20181008155210-deployment",
+      "UnauthRoleName": "ostspp-20181008155210-unauthRole",
+      "StackName": "ostspp-20181008155210",
+      "StackId": "arn:aws:cloudformation:us-west-2:569053839623:stack/ostspp-20181008155210/5ab24b00-cb01-11e8-8c6c-50a686be7356"
+    }
+  },
+  "api": {
+    "AWSAppSyncTutorial": {
+      "service": "AppSync",
+      "output": {
+        "securityType": "API_KEY",
+        "GraphQLAPIIdOutput": "xoqnoeczwjagdebvclaitfqqxq",
+        "GraphQLAPIEndpointOutput": "https://5olpkf7sqzdfhkczlv3boreszy.appsync-api.us-west-2.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "XXX-XXXXXX"
+      },
+      "lastPushTimeStamp": "2018-10-08T13:56:50.422Z"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+# this is an auto generated file. This will be overwritten
+query GetEquipment($id: ID) {
+  getEquipment(id: $id) {
+    id
+    name
+  }
+}
+query AllPostsByTag($tag: String!, $count: Int, $nextToken: String) {
+  allPostsByTag(tag: $tag, count: $count, nextToken: $nextToken) {
+    posts {
+      id
+      author
+      title
+      content
+      url
+      ups
+      downs
+      version
+      tags
+      comments {
+        author
+        comment
+      }
+      owner
+    }
+    nextToken
+  }
+}
+query AllPostsByAuthor($author: String!, $count: Int, $nextToken: String) {
+  allPostsByAuthor(author: $author, count: $count, nextToken: $nextToken) {
+    posts {
+      id
+      author
+      title
+      content
+      url
+      ups
+      downs
+      version
+      tags
+      comments {
+        author
+        comment
+      }
+      owner
+    }
+    nextToken
+  }
+}
+query AllPost($count: Int, $nextToken: String) {
+  allPost(count: $count, nextToken: $nextToken) {
+    posts {
+      id
+      author
+      title
+      content
+      url
+      ups
+      downs
+      version
+      tags
+      comments {
+        author
+        comment
+      }
+      owner
+    }
+    nextToken
+  }
+}
+query GetPost($id: ID) {
+  getPost(id: $id) {
+    id
+    author
+    title
+    content
+    url
+    ups
+    downs
+    version
+    tags
+    comments {
+      author
+      comment
+    }
+    owner
+  }
+}
