@@ -1365,7 +1365,7 @@ public final class DownvotePostMutation: GraphQLMutation {
         }
       }
     }
-  }
+  }     
 }
 
 public final class UpdatePostMutation: GraphQLMutation {

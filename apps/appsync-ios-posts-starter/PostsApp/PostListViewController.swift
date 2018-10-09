@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import AWSAppSync
 
 class PostCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
@@ -18,43 +19,79 @@ class PostCell: UITableViewCell {
 }
 
 protocol PostUpdates {
-    func newPostAdded(post: Post)
-    func postUpdated(post: Post)
-    func postDeleted(post: Post)
+    func newPostAdded(postMutation: AddPostMutation)
+    func postUpdated(postMutation: UpdatePostMutation)
+    func postDeleted(postMutation: DeletePostMutation)
 }
 
 class PostListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PostUpdates {
-    func postUpdated(post: Post) {
-        var postition = -1
-        for  i in 0..<postList.count {
-            if (post.id == postList[i].id) {
-                postition = i
+    
+    func newPostAdded(postMutation: AddPostMutation) {
+        appSyncClient?.perform(mutation: postMutation) { (result, error) in
+            if let error = error as? AWSAppSyncClientError {
+                print("Error occurred: \(error.localizedDescription )")
+            } else {
+                self.loadAllPosts()
+            }
+            if let resultError = result?.errors {
+                print("Error adding the item on server: \(resultError)")
+                return
             }
         }
-        
-        if (postition != -1) {
-            postList.remove(at: postition)
-            postList.insert(post, at: postition)
-        }
-        self.tableView.reloadData()
     }
     
-    func postDeleted(post: Post) {
-        var postition = -1
-        for  i in 0..<postList.count {
-            if (post.id == postList[i].id) {
-                postition = i
+    func postUpdated(postMutation: UpdatePostMutation) {
+        appSyncClient?.perform(mutation: postMutation) { (result, error) in
+            if let error = error as? AWSAppSyncClientError {
+                print("Error occurred while making request: \(error.localizedDescription )")
+                return
+            } else {
+                self.loadAllPosts()
+            }
+            if let resultError = result?.errors {
+                print("Error updating the item on server: \(resultError)")
+                return
             }
         }
-        if (postition != -1) {
-            postList.remove(at: postition)
-        }
-        self.tableView.reloadData()
     }
     
+    func postDeleted(postMutation: DeletePostMutation) {
+        appSyncClient?.perform(mutation: postMutation) { (result, error) in
+            if let error = error as? AWSAppSyncClientError {
+                print("Error occurred: \(error.localizedDescription )")
+            } else {
+                self.loadAllPosts()
+            }
+            if let resultError = result?.errors {
+                print("Error deleting the item on server: \(resultError)")
+                return
+            }
+        }
+    }
+    
+    var appSyncClient: AWSAppSyncClient?
     
     @IBOutlet weak var tableView: UITableView!
-    var postList = [Post]()
+    //var postList = [Post]()
+    var postList: [AllPostQuery.Data.AllPost.Post] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    func loadAllPosts() {
+        appSyncClient?.fetch(query: AllPostQuery(), cachePolicy: .returnCacheDataAndFetch)  { (result, error) in
+            if let error = error as? AWSAppSyncClientError {
+                print("Error occurred: \(error.localizedDescription )")
+            }
+            if let posts = result?.data?.allPost.posts {
+                self.postList = posts
+            } else {
+                self.postList = []
+            }
+        }
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,12 +102,16 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         self.tableView.delegate = self
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addTapped))
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appSyncClient = appDelegate.appSyncClient
+        loadAllPosts()
     }
     
     @objc func addTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "NewPostViewController") as! AddPostViewController
-        controller.newPostDelegate = self
+        controller.postUpdatesDelegate = self
         self.present(controller, animated: true, completion: nil)
         
     }
@@ -88,7 +129,7 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         let post = postList[indexPath.row]
-        cell.updateValues(author: post.author, title: post.title, content: post.content)
+        cell.updateValues(author: post.author!, title: post.title, content: post.content)
         return cell
     }
     
@@ -98,8 +139,9 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            postList.remove(at: indexPath.row)
-            self.tableView.reloadData()
+            let post = postList[indexPath.row]
+            let postMutation = DeletePostMutation(id: post.id, expectedVersion: post.version)
+            postDeleted(postMutation: postMutation)
         }
     }
     
@@ -109,14 +151,10 @@ class PostListViewController: UIViewController, UITableViewDelegate, UITableView
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "UpdatePostViewController") as! UpdatePostViewController
+        // TODO: provide post for update
         controller.post = post
-        controller.updatePostDelegate = self
+        controller.postUpdatesDelegate = self
         self.present(controller, animated: true, completion: nil)
-    }
-    
-    func newPostAdded(post: Post) {
-        postList.append(post)
-        tableView.reloadData()
     }
 
 }

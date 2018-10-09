@@ -16,6 +16,8 @@
 		17CBF3AA1FB4DC480015BC6A /* UpdatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CBF3A91FB4DC480015BC6A /* UpdatePostViewController.swift */; };
 		17CBF3AC1FB546AC0015BC6A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CBF3AB1FB546AC0015BC6A /* Constants.swift */; };
 		6093B3B68C4FA66CA24AD4B5 /* Pods_PostsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 681D49BBC3F5EF7B779261FD /* Pods_PostsApp.framework */; };
+		66D5A549216CA3B90039554F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D5A548216CA3B90039554F /* API.swift */; };
+		66D5A54B216CDBD00039554F /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 66D5A54A216CDBD00039554F /* awsconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		17CBF3A91FB4DC480015BC6A /* UpdatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePostViewController.swift; sourceTree = "<group>"; };
 		17CBF3AB1FB546AC0015BC6A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		19C8A7DC3E49DF924C1D65AA /* Pods-PostsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-PostsApp/Pods-PostsApp.release.xcconfig"; sourceTree = "<group>"; };
+		66D5A548216CA3B90039554F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = SOURCE_ROOT; };
+		66D5A54A216CDBD00039554F /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		681D49BBC3F5EF7B779261FD /* Pods_PostsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PostsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6AC042D81242B4D09E77CA6 /* Pods-PostsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PostsApp/Pods-PostsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +80,8 @@
 				17CBF39E1FB4B2E00015BC6A /* LaunchScreen.storyboard */,
 				17CBF3A11FB4B2E00015BC6A /* Info.plist */,
 				17CBF3AB1FB546AC0015BC6A /* Constants.swift */,
+				66D5A548216CA3B90039554F /* API.swift */,
+				66D5A54A216CDBD00039554F /* awsconfiguration.json */,
 			);
 			path = PostsApp;
 			sourceTree = "<group>";
@@ -158,6 +164,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D5A54B216CDBD00039554F /* awsconfiguration.json in Resources */,
 				17CBF3A01FB4B2E00015BC6A /* LaunchScreen.storyboard in Resources */,
 				17CBF39D1FB4B2E00015BC6A /* Assets.xcassets in Resources */,
 				17CBF39B1FB4B2E00015BC6A /* Main.storyboard in Resources */,
@@ -228,6 +235,7 @@
 				17CBF3981FB4B2E00015BC6A /* PostListViewController.swift in Sources */,
 				17CBF3AA1FB4DC480015BC6A /* UpdatePostViewController.swift in Sources */,
 				17CBF3961FB4B2E00015BC6A /* AppDelegate.swift in Sources */,
+				66D5A549216CA3B90039554F /* API.swift in Sources */,
 				17CBF3A81FB4B3A40015BC6A /* AddPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

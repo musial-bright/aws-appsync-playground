@@ -5,18 +5,24 @@
 
 import Foundation
 import UIKit
+import AWSAppSync
 
 class UpdatePostViewController: UIViewController {
     
-    var post: Post?
+    var post: AllPostQuery.Data.AllPost.Post?
     @IBOutlet weak var authorInput: UITextField!
     @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var contentInput: UITextField!
     @IBOutlet weak var urlInput: UITextField!
-    var updatePostDelegate: PostUpdates?
+    var postUpdatesDelegate: PostUpdates?
+    var appSyncClient: AWSAppSyncClient?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appSyncClient = appDelegate.appSyncClient!
+        
         authorInput.text = post?.author
         titleInput.text = post?.title
         contentInput.text = post?.content
@@ -29,8 +35,10 @@ class UpdatePostViewController: UIViewController {
     }
     
     @IBAction func updatePost(_ sender: Any) {
-        let post = Post(id: self.post!.id, author: authorInput.text!, title: titleInput.text, content: contentInput.text, url: urlInput.text)
-        updatePostDelegate?.postUpdated(post: post)
+        let postMutation = UpdatePostMutation(id: post!.id, author: authorInput.text, title: titleInput.text, content: contentInput.text, url: urlInput.text, expectedVersion: post!.version)
+        
+        postUpdatesDelegate?.postUpdated(postMutation: postMutation)
+        
         self.dismiss(animated: true, completion: nil)
     }
     

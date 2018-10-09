@@ -5,8 +5,9 @@
 
 import Foundation
 import UIKit
+import AWSAppSync
 
-
+/*
 class Post {
     let id: String
     let author: String
@@ -26,6 +27,7 @@ class Post {
         self.id = id
     }
 }
+*/
 
 class AddPostViewController: UIViewController {
     
@@ -33,11 +35,14 @@ class AddPostViewController: UIViewController {
     @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var contentInput: UITextField!
     @IBOutlet weak var urlInput: UITextField!
-    var newPostDelegate: PostUpdates?
+    var postUpdatesDelegate: PostUpdates?
+    var appSyncClient: AWSAppSyncClient?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appSyncClient = appDelegate.appSyncClient!
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,8 +51,12 @@ class AddPostViewController: UIViewController {
     }
     
     @IBAction func addNewPost(_ sender: Any) {
-        let post = Post(author: authorInput.text!, title: titleInput.text, content: contentInput.text, url: urlInput.text)
-        newPostDelegate?.newPostAdded(post: post)
+        //let post = Post(author: authorInput.text!, title: titleInput.text, content: contentInput.text, url: urlInput.text)
+        
+        let postMutation = AddPostMutation(id: UUID().uuidString, author: authorInput.text!, title: titleInput.text!, content: contentInput.text!, url: "www.google.com")
+        
+        postUpdatesDelegate?.newPostAdded(postMutation: postMutation)
+        
         self.dismiss(animated: true, completion: nil)
     }
     
