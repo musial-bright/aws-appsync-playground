@@ -11,7 +11,7 @@ This playground is based on AWS AppSync
 ### Installation:
 - Install AWS Apmlify: `npm install -g @aws-amplify/cli`
 
-Already in the project, but when new you have to do:
+Already in the project, but when new it's good to know the following:
 - `amplify init` has been already done, but you should know that it exists
 - Download and generate your API from AWS AppSync `amplify add codegen --apiId xoqnoeczwjagdebvclaitfqqxq`
 
@@ -25,9 +25,9 @@ Remember to put the AppSync API-Key into. You can generate a key in the AWS AppS
 ```
 
 ### Development
-Regular XCode stuff. Since Pods are used open the project with `PostsApp.xcworkspace` instead of the regular `PostsApp.xcodeproj`.
+In general for iOS development you will develop a regular XCode project. Since Pods are used open the project with `PostsApp.xcworkspace` instead of `PostsApp.xcodeproj`.
 
-If you make any GraphQL schema changes on the AppSync server you have to run `amplify codegen generate` in your project. If you made changes locally you have to push to the AppSync server `amplify push`. To check teh status just hit `amplify status`.
+If you make any GraphQL schema changes on the AppSync server you have to run `amplify codegen generate` in your project. If you made changes locally you have to push to the AppSync server `amplify push`. To check the status just hit `amplify status`.
 
 ## Files in general
 ```
