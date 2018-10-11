@@ -13,7 +13,7 @@ This playground is based on AWS AppSync
 
 Already in the project, but when new it's good to know the following:
 - `amplify init` has been already done, but you should know that it exists
-- Download and generate your API from AWS AppSync `amplify add codegen --apiId xoqnoeczwjagdebvclaitfqqxq`
+- Download and generate your API from AWS AppSync `amplify add codegen --apiId xxx-yy-zz`
 
 ### Config
 Remember to put the AppSync API-Key into. You can generate a key in the AWS AppSync console.
